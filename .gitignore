@@ -1,0 +1,8 @@
+node_modules
+dist
+.DS_Store
+*.log
+
+# Vite local env overrides — actual .env.development / .env.production are committed defaults.
+.env.local
+.env.*.local

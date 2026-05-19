@@ -1,0 +1,70 @@
+.company-jobs-page-container{
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 80px 20px 60px;
+}
+
+.company-jobs-page-container-h1{
+  font-size: 56px;
+  font-weight: 600;
+  letter-spacing: -1.5px;
+  margin-bottom: 16px;
+  background: linear-gradient(90deg, #f5f5f7 0%, #86868b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+
+.company-job-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  padding: 28px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.company-job-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
+}
+
+.company-job-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #f5f5f7;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
+
+.company-job-meta {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.company-job-meta-item {
+  font-size: 12px;
+  color: #86868b;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+@media (max-width: 768px) {
+  .company-jobs-page-container {
+    padding: 40px 16px 40px;
+  }
+
+  .company-jobs-page-container-h1 {
+    font-size: 30px;
+    letter-spacing: -0.8px;
+  }
+
+  .company-job-card {
+    padding: 20px 16px;
+  }
+}
