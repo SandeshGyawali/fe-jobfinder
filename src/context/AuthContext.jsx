@@ -1,5 +1,5 @@
 import { createContext, useCallback, useEffect, useState } from 'react';
-import { API_BASE_URL as API } from '../utils/apiFetch';
+import { API_BASE_URL as API, SESSION_EXPIRED_EVENT } from '../utils/apiFetch';
 
 export const AuthContext = createContext(null);
 
@@ -28,6 +28,19 @@ export function AuthProvider({ children }) {
         setIsLoading(false);
       });
   }, [accessToken]);
+
+  // Listen for global "session expired" events broadcast by apiFetch when a
+  // 401 happens and silent refresh fails. Clears state so the navbar reflects
+  // reality immediately, no matter which page noticed the expiry.
+  useEffect(() => {
+    function handler() {
+      localStorage.removeItem('access_token');
+      setAccessToken(null);
+      setUser(null);
+    }
+    window.addEventListener(SESSION_EXPIRED_EVENT, handler);
+    return () => window.removeEventListener(SESSION_EXPIRED_EVENT, handler);
+  }, []);
 
   const login = useCallback(async (email, password) => {
     const res = await fetch(`${API}/auth/login`, {

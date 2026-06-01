@@ -92,7 +92,22 @@ export default function Home() {
 
       <div className="jobs-container">
         {jobs.length === 0 ? (
-          <div className="loading">No jobs available at the moment.</div>
+          <div className="empty-state">
+            <div className="loading">
+              {isFiltered
+                ? `No jobs match "${selectedLevel}" + "${selectedExperience === '0' ? 'Entry (0 years)' : `${selectedExperience}+ years`}".`
+                : 'No jobs available at the moment.'}
+            </div>
+            {isFiltered && (
+              <button
+                className="search-btn"
+                onClick={handleReset}
+                style={{ marginTop: 20 }}
+              >
+                Show all jobs
+              </button>
+            )}
+          </div>
         ) : (
           <>
             <div className="jobs-search">
