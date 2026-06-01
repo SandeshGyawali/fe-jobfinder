@@ -1,16 +1,21 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
+import { useTheme } from '../hooks/useTheme';
+import UserMenu from './UserMenu';
+
+const PRIMARY_LINKS = [
+  { to: '/', label: 'Home', end: true },
+  { to: '/new-listings', label: 'New' },
+  { to: '/companies', label: 'Companies' },
+  { to: '/about', label: 'About' },
+  { to: '/contact', label: 'Contact' },
+];
 
 export default function Navbar() {
-  const { user, logout } = useAuth();
-  const navigate = useNavigate();
+  const { user } = useAuth();
+  const { theme, toggle } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
-
-  async function handleLogout() {
-    await logout();
-    navigate('/');
-  }
 
   function closeMenu() {
     setMenuOpen(false);
@@ -20,27 +25,41 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="nav-container">
         <Link to="/" className="nav-logo" onClick={closeMenu}>JobSearch</Link>
+
         <ul className={`nav-links${menuOpen ? ' nav-links--open' : ''}`}>
-          <li><Link to="/" onClick={closeMenu}>Home</Link></li>
-          <li><Link to="/new-listings" onClick={closeMenu}>New Listings</Link></li>
-          <li><Link to="/companies" onClick={closeMenu}>Companies</Link></li>
-          <li><Link to="/about" onClick={closeMenu}>About Us</Link></li>
-          <li><Link to="/contact" onClick={closeMenu}>Contact</Link></li>
+          {PRIMARY_LINKS.map(l => (
+            <li key={l.to}>
+              <NavLink
+                to={l.to}
+                end={l.end}
+                onClick={closeMenu}
+                className={({ isActive }) => `nav-link${isActive ? ' nav-link--active' : ''}`}
+              >
+                {l.label}
+              </NavLink>
+            </li>
+          ))}
         </ul>
+
         <div className="nav-auth">
+          <button
+            className="nav-icon-btn"
+            onClick={toggle}
+            aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+            title={theme === 'light' ? 'Dark mode' : 'Light mode'}
+          >
+            {theme === 'light' ? '☽' : '☀'}
+          </button>
           {user ? (
-            <>
-              <span className="nav-user">Hi, {user.first_name || user.email}!</span>
-              {user.role === 'admin' && <span className="nav-role-badge">admin</span>}
-              <button className="nav-logout-btn" onClick={handleLogout}>Logout</button>
-            </>
+            <UserMenu />
           ) : (
             <>
-              <Link to="/login" className="nav-login-btn">Sign in</Link>
-              <Link to="/register" className="nav-register-btn">Register</Link>
+              <Link to="/login" className="nav-signin">Sign in</Link>
+              <Link to="/register" className="nav-cta">Register</Link>
             </>
           )}
         </div>
+
         <button
           className="nav-hamburger"
           onClick={() => setMenuOpen(o => !o)}

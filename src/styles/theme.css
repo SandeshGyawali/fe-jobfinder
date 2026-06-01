@@ -1,0 +1,71 @@
+/*
+ * Theme variables.
+ *
+ * Default = dark (the original look). Light theme overrides on
+ * :root[data-theme="light"]. ThemeProvider sets that attribute based on
+ * localStorage or the OS preference.
+ */
+
+:root {
+  --bg: #000;
+  --bg-overlay: rgba(0, 0, 0, 0.8);
+  --bg-overlay-strong: rgba(0, 0, 0, 0.96);
+  --bg-deep: rgba(0, 0, 0, 0.4);
+
+  --text: #f5f5f7;
+  --text-muted: #86868b;
+
+  --surface-soft: rgba(255, 255, 255, 0.02);
+  --surface: rgba(255, 255, 255, 0.03);
+  --surface-emphasis: rgba(255, 255, 255, 0.05);
+  --surface-hover: rgba(255, 255, 255, 0.06);
+  --surface-strong: rgba(255, 255, 255, 0.08);
+
+  --border-soft: rgba(255, 255, 255, 0.05);
+  --border-table: rgba(255, 255, 255, 0.08);
+  --border: rgba(255, 255, 255, 0.1);
+  --border-input: rgba(255, 255, 255, 0.12);
+  --border-strong: rgba(255, 255, 255, 0.2);
+  --border-strong-2: rgba(255, 255, 255, 0.3);
+  --border-strong-3: rgba(255, 255, 255, 0.35);
+
+  --select-option-bg: #1c1c1e;
+
+  --badge-warn-bg: rgba(255, 214, 110, 0.12);
+  --badge-warn-fg: #f8d88c;
+  --badge-warn-border: rgba(255, 214, 110, 0.2);
+
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --bg: #ffffff;
+  --bg-overlay: rgba(255, 255, 255, 0.85);
+  --bg-overlay-strong: rgba(255, 255, 255, 0.96);
+  --bg-deep: rgba(0, 0, 0, 0.04);
+
+  --text: #1d1d1f;
+  --text-muted: #6e6e73;
+
+  --surface-soft: rgba(0, 0, 0, 0.02);
+  --surface: rgba(0, 0, 0, 0.04);
+  --surface-emphasis: rgba(0, 0, 0, 0.05);
+  --surface-hover: rgba(0, 0, 0, 0.07);
+  --surface-strong: rgba(0, 0, 0, 0.09);
+
+  --border-soft: rgba(0, 0, 0, 0.06);
+  --border-table: rgba(0, 0, 0, 0.08);
+  --border: rgba(0, 0, 0, 0.1);
+  --border-input: rgba(0, 0, 0, 0.12);
+  --border-strong: rgba(0, 0, 0, 0.2);
+  --border-strong-2: rgba(0, 0, 0, 0.25);
+  --border-strong-3: rgba(0, 0, 0, 0.3);
+
+  --select-option-bg: #ffffff;
+
+  --badge-warn-bg: rgba(180, 110, 0, 0.12);
+  --badge-warn-fg: #8a5a00;
+  --badge-warn-border: rgba(180, 110, 0, 0.3);
+
+  color-scheme: light;
+}
