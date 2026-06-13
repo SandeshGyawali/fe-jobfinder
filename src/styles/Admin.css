@@ -206,6 +206,7 @@
 .admin-status--running   { background: rgba(10, 132, 255, 0.18); color: #5eb5ff; }
 .admin-status--success   { background: rgba(48, 209, 88, 0.18); color: #30d158; }
 .admin-status--failed    { background: rgba(255, 69, 58, 0.18); color: #ff6961; }
+.admin-status--partial   { background: rgba(255, 214, 10, 0.18); color: #ffd60a; }
 .admin-status--starting  { background: rgba(255, 159, 10, 0.18); color: #ffb340; }
 
 .admin-log {
